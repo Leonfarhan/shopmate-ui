@@ -11,6 +11,10 @@ interface CheckoutProps {
 export default function Checkout({ productId }: CheckoutProps) {
   const handleCheckout = async () => {
     const session = await checkout(productId);
+    if (session.error || !session.data) {
+      console.error("Checkout failed:", session.error);
+      return;
+    }
     const stripe = await getStripe();
     await stripe?.redirectToCheckout({ sessionId: session.data.id });
   };
