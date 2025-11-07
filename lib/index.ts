@@ -5,4 +5,4 @@
 
 export * from "./api";
 export * from "./constants";
-export { darkTheme } from "./theme";
+export { default as darkTheme } from "./theme";
